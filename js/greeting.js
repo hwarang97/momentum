@@ -13,5 +13,6 @@ loginForm.addEventListener("submit", onLoginSubmit);
 
 const savedUserName = localStorage.getItem('username');
 if(savedUserName){
-    greeting.innerText = savedUserName;
+    greeting.innerText = `Hello, ${savedUserName}!`;
+    loginForm.classList.add('hidden');
 }
