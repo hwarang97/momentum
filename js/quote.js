@@ -35,3 +35,12 @@ const quotes = [
 
 const quote = document.querySelector('#quote-text');
 const author = document.querySelector('#quote-author');
+
+function paintQuote(quotes){
+    const randomNumber = Math.floor(Math.random()*quotes.length);
+    quote.innerText = quotes[randomNumber].quote;
+    author.innerText = quotes[randomNumber].author;
+
+}
+
+paintQuote(quotes);
