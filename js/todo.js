@@ -11,6 +11,11 @@ function ontoDoFormSubmit(event) {
     addToDo(todoInput);
 }
 
+function delelteToDo(event){
+    const parentList = event.srcElement.parentElement;
+    parentList.remove();
+}
+
 function addToDo(todoInput){
     const newList = document.createElement('li');
     const newToDo = document.createElement('span');
@@ -18,8 +23,10 @@ function addToDo(todoInput){
     newList.appendChild(newToDo);
     const button = document.createElement('button');
     button.innerText = "❌";
+    button.addEventListener('click', delelteToDo);
     newList.appendChild(button);
     toDoList.appendChild(newList);
 }
+
 
 toDoForm.addEventListener('submit', ontoDoFormSubmit);
