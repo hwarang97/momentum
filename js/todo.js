@@ -11,16 +11,31 @@ function ontoDoFormSubmit(event) {
     const todoInput = toDoInput.value;
     toDoInput.value = "";
 
-    addToDo(todoInput);
+    // object to be added
+    const obj = {
+        id: Date.now(),
+        todo: todoInput,
+    }
+
+    // add to list
+    addToDo(obj);
 
     // localstorage
-    toDoLists.push(todoInput);
+    toDoLists.push(obj);
     localStorage.setItem(TODO_KEY, JSON.stringify(toDoLists));
 }
 
 function delelteToDo(event){
     const parentList = event.srcElement.parentElement;
+    
+    // remove li from todo list
     parentList.remove();
+
+    // remove todo from toDoLists
+
+
+    // update localstorage
+    localStorage.getItem('todos', toDoLists);
 }
 
 function addToDo(todoInput){
@@ -30,7 +45,7 @@ function addToDo(todoInput){
 
     // span
     const newToDo = document.createElement('span');
-    newToDo.innerText = todoInput;
+    newToDo.innerText = todoInput[TODO_KEY];
     newList.appendChild(newToDo);
     
     // button
