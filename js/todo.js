@@ -26,21 +26,23 @@ function ontoDoFormSubmit(event) {
 }
 
 function delelteToDo(event){
-    const parentList = event.srcElement.parentElement;
-    
-    // remove li from todo list
-    parentList.remove();
+    const li = event.srcElement.parentElement;
+    console.log(toDoLists)
 
     // remove todo from toDoLists
-
+    toDoLists = toDoLists.filter((obj) => String(obj.id) !== li.id)
+    
+    // remove li from todo list
+    li.remove();
 
     // update localstorage
-    localStorage.getItem('todos', toDoLists);
+    localStorage.setItem(TODO_KEY, JSON.stringify(toDoLists));
 }
 
 function addToDo(todoInput){
-    // li
+    // li has span and button
     const newList = document.createElement('li');
+    newList.id = todoInput['id'];
     toDoList.appendChild(newList);
 
     // span
